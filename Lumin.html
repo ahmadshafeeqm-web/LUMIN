@@ -722,6 +722,14 @@ section.blk[data-view="chat"]{padding-top:8px}
 .cform textarea:focus{outline:2px solid var(--accent)}
 .cform .btn{height:48px}
 .cnote{color:var(--muted);font-size:12.5px;margin-top:10px}
+.w-credit{text-align:center;font-size:11.5px;letter-spacing:.08em;color:rgba(200,210,245,.5);margin:6px 0 18px}
+form#signupForm{width:100%;display:grid;gap:16px}
+.lcard form#signupForm{max-width:none}
+.atabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:16px;background:#0b0c12;border:1px solid #2a2d45;margin-bottom:20px;transform:translateZ(40px)}
+.atabs button{height:40px;border:0;border-radius:12px;background:transparent;color:#9aa3cc;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}
+.atabs button.on{background:linear-gradient(135deg,#5f82ff,#7b5cf0);color:#fff;box-shadow:0 6px 14px rgba(99,133,255,.35)}
+.lcard form#signupForm .fld{transform:translateZ(30px)}
+.lnote{font-size:12.5px;color:var(--s-mut);text-align:center}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.mem{rotate:0deg!important}}
 </style>
 
@@ -745,13 +753,14 @@ section.blk[data-view="chat"]{padding-top:8px}
         <div class="lpills"><span>Profile</span><span>Events</span><span>Memories</span><span>Quiz Arena</span></div>
       </div>
       <div class="lcard" id="lcard">
+<div class="atabs" role="tablist"><button type="button" id="tabUp" role="tab">Create account</button><button type="button" id="tabIn" role="tab" class="on">Sign in</button></div>
 <form id="loginForm" novalidate>
       <div class="lhead"><span class="lbadge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></span><h2>Welcome back</h2><p class="sub">Sign in to open your profile.</p></div>
       <div class="fld">
-        <label for="user">Admission Number</label>
+        <label for="user">Admission number or email</label>
         <div class="in">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h4M6 16c.6-1.6 1.6-2 3-2s2.4.4 3 2"/></svg>
-          <input id="user" name="username" placeholder="Admission no" autocomplete="username" inputmode="text">
+          <input id="user" name="username" placeholder="Admission no or email" autocomplete="username" inputmode="text">
         </div>
       </div>
       <div class="fld">
@@ -766,6 +775,17 @@ section.blk[data-view="chat"]{padding-top:8px}
       <div class="err" id="err" role="alert"></div>
       <button class="btn go" type="submit">Sign In <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     </form>
+    <form id="signupForm" novalidate hidden>
+      <div class="lhead"><span class="lbadge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span><h2>Create account</h2><p class="sub">Make your own private profile.</p></div>
+      <div class="fld"><label for="suName">Full name</label><div class="in"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><input id="suName" placeholder="Your name" autocomplete="name" maxlength="40"></div></div>
+      <div class="fld"><label for="suEmail">Email</label><div class="in"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg><input id="suEmail" type="email" placeholder="you@example.com" autocomplete="email" inputmode="email"></div></div>
+      <div class="fld"><label for="suPass">Password</label><div class="in"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><input id="suPass" type="password" placeholder="At least 6 characters" autocomplete="new-password"></div></div>
+      <div class="fld"><label for="suPass2">Confirm password</label><div class="in"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><input id="suPass2" type="password" placeholder="Repeat password" autocomplete="new-password"></div></div>
+      <div class="err" id="suErr" role="alert"></div>
+      <button class="btn go" type="submit">Create account <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <p class="lnote">Your account is saved on this device only.</p>
+    </form>
+    
       </div>
     </section>
   </div>
@@ -802,6 +822,7 @@ section.blk[data-view="chat"]{padding-top:8px}
       <button type="button" class="wc b-ach" data-go="arena"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L8 21l4-2 4 2-1-7.5"/></svg><b>Achievements</b><span>Your proudest moments.</span></button>
     </div>
     <p class="w-foot">A personal space on the internet</p>
+    <p class="w-credit">Crafted by Ahmad Shafeeq M</p>
   </div>
 </main>
 
@@ -1054,10 +1075,14 @@ const ss = {
 
 const PROFILES = [
   {adm:"398", phone:"9880250677", name:"Ahmad Shafeeq M"},
-  {adm:"393", phone:"9740261698", name:"Shafeeq AR"}
+  {adm:"393", phone:"9740261698", name:"Shafeeq AR"},
+  {adm:"385", phone:"8197753414", name:"Arfaz"},
+  {adm:"402", phone:"9964680718", name:"Mahiz"}
 ];
+let ACC = {};
+try { ACC = JSON.parse(ls.get("lumin.accounts")) || {}; } catch(e){ ACC = {}; }
 let CUR = ls.get(SESSION) || ss.get(SESSION) || ls.get("lumin.last") || "398";
-if(!PROFILES.some(p => p.adm === CUR)) CUR = "398";
+if(!PROFILES.some(p => p.adm === CUR) && !ACC[CUR]) CUR = "398";
 const NS = CUR === "398" ? "" : "." + CUR;
 const KEY = "lumin.v4" + NS;
 
@@ -1091,15 +1116,16 @@ const defaults = {
 };
 function freshFor(p){
   const d = JSON.parse(JSON.stringify(defaults));
+  if(ACC[p.adm]){ const a = ACC[p.adm]; d.name = a.name; d.fields = d.fields.map(f => f[0] === "Full name" ? [f[0], a.name] : f[0] === "Admission no" ? [f[0], ""] : f[0] === "Phone" ? [f[0], ""] : f[0] === "Email" ? [f[0], a.email] : f); d.events = []; d.memories = []; return d; }
   if(p.adm !== "398"){ d.name = p.name; d.fields = d.fields.map(f => f[0] === "Full name" ? [f[0], p.name] : f[0] === "Admission no" ? [f[0], p.adm] : f[0] === "Phone" ? [f[0], p.phone] : f); d.events = []; d.memories = []; }
   return d;
 }
 function stateFor(p){ let x = null; try { x = JSON.parse(ls.get("lumin.v4" + (p.adm === "398" ? "" : "." + p.adm))); } catch(e){} return x || freshFor(p); }
 let S;
 try { S = JSON.parse(ls.get(KEY)); } catch(e){ S = null; }
-if (!S) S = freshFor(PROFILES.find(p => p.adm === CUR));
+if (!S) S = freshFor(PROFILES.find(p => p.adm === CUR) || {adm:CUR});
 if (!Array.isArray(S.gallery)) S.gallery = JSON.parse(JSON.stringify(defaults.gallery));
-if (!S.fields.some(f => f[0] === "Admission no")) S.fields.splice(1,0,["Admission no",CUR]);
+if (!S.fields.some(f => f[0] === "Admission no")) S.fields.splice(1,0,["Admission no", ACC[CUR] ? "" : CUR]);
 let toastT;
 function toast(m){ const t = $("toast"); if(!t) return; t.textContent = m; t.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(()=>t.classList.remove("on"), 1600); }
 function save(){ const ok = ls.set(KEY, JSON.stringify(S)); toast(ok ? "Saved" : "Storage is full. Remove a photo to add more."); return ok; }
@@ -1138,23 +1164,52 @@ $("eye").addEventListener("click", () => {
   p.type = t ? "text" : "password";
   $("eye").setAttribute("aria-label", t ? "Hide password" : "Show password");
 });
-$("loginForm").addEventListener("submit", (e) => {
+const sha = async (t) => [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t)))].map(b => b.toString(16).padStart(2,"0")).join("");
+function enter(id){
+  ls.set("lumin.last", id);
+  if($("remember").checked) ls.set(SESSION, id); else ss.set(SESSION, id);
+  $("pass").value = "";
+  if(id !== CUR){ ss.set("lumin.gowelcome","1"); location.reload(); return; }
+  screen("welcome");
+}
+function authTab(up){
+  $("tabUp").classList.toggle("on", up); $("tabIn").classList.toggle("on", !up);
+  $("signupForm").hidden = !up; $("loginForm").hidden = up; $("err").textContent = ""; $("suErr").textContent = "";
+}
+$("tabUp").addEventListener("click", () => authTab(true)); $("tabIn").addEventListener("click", () => authTab(false));
+if(!Object.keys(ACC).length && !ls.get("lumin.last")) authTab(true);
+$("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const u = $("user").value.trim(), p = $("pass").value;
-  if(!u || !p){ $("err").textContent = "Enter your admission number and phone number."; return; }
+  if(!u || !p){ $("err").textContent = "Enter your admission number or email, and your password."; return; }
+  if(u.includes("@")){
+    const em = u.toLowerCase(), id = Object.keys(ACC).find(k => ACC[k].email === em);
+    let ok = false; try { ok = !!id && (await sha(ACC[id].salt + p)) === ACC[id].hash; } catch(err){}
+    if(ok){ $("err").textContent = ""; enter(id); } else $("err").textContent = "That email or password is not right. New here? Choose Create account.";
+    return;
+  }
   const norm = (x) => x.replace(/\s+/g,"").toLowerCase(), dig = (x) => x.replace(/\D/g,"");
   const match = PROFILES.find(pr => {
     const st = stateFor(pr), val = (k) => (st.fields.find(f => f[0] === k) || [,""])[1] || "";
     return norm(u) !== "" && norm(u) === norm(val("Admission no")) && dig(p).length >= 10 && dig(p).slice(-10) === dig(val("Phone")).slice(-10);
   });
-  if(match){
-    $("err").textContent = "";
-    ls.set("lumin.last", match.adm);
-    if($("remember").checked) ls.set(SESSION, match.adm); else ss.set(SESSION, match.adm);
-    $("pass").value = "";
-    if(match.adm !== CUR){ ss.set("lumin.gowelcome","1"); location.reload(); return; }
-    screen("welcome");
-  } else $("err").textContent = "The admission number or phone number is not right. Check both and try again.";
+  if(match){ $("err").textContent = ""; enter(match.adm); }
+  else $("err").textContent = "The admission number or password is not right. Check both and try again.";
+});
+$("signupForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const name = $("suName").value.trim(), em = $("suEmail").value.trim().toLowerCase(), p1 = $("suPass").value, p2 = $("suPass2").value, er = $("suErr");
+  if(!name){ er.textContent = "Please enter your name."; return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){ er.textContent = "Enter a valid email address."; return; }
+  if(p1.length < 6){ er.textContent = "Use a password with at least 6 characters."; return; }
+  if(p1 !== p2){ er.textContent = "The two passwords do not match."; return; }
+  if(Object.values(ACC).some(a => a.email === em)){ er.textContent = "An account with this email already exists here. Choose Sign in."; return; }
+  try {
+    const id = "u" + [...crypto.getRandomValues(new Uint8Array(4))].map(b => b.toString(16).padStart(2,"0")).join(""), salt = [...crypto.getRandomValues(new Uint8Array(8))].map(b => b.toString(16).padStart(2,"0")).join("");
+    ACC[id] = {name, email:em, salt, hash: await sha(salt + p1)};
+    if(!ls.set("lumin.accounts", JSON.stringify(ACC))){ delete ACC[id]; er.textContent = "Could not save the account in this browser."; return; }
+    er.textContent = ""; $("remember").checked = false; enter(id);
+  } catch(err){ er.textContent = "Account creation is not available in this browser."; }
 });
 $("logout").addEventListener("click", () => { ls.del(SESSION); ss.del(SESSION); show(false); });
 
@@ -2056,10 +2111,12 @@ function drawChat(){
 }
 async function ask(){
   const inp = $("chIn"), q = inp.value.trim(); if(!q || busy) return;
-  if(!sampleFn){ bubble("ai","Chat is only available when this page is opened inside Claude. Open the published link in Claude to use it.", true); return; }
-  busy = true; inp.value = ""; $("chSend").disabled = true; $("chStop").hidden = false;
-  turns.push({role:"user", content:q}); if(turns.length === 1 || !chMsgs.querySelector(".bub.me")) drawChat(); else bubble("me", q);
+  inp.value = ""; inp.style.height = "auto";
+  turns.push({role:"user", content:q}); store.set("lumin.chat" + NS, turns.slice(-30));
+  if(!chMsgs.querySelector(".bub.me")) drawChat(); else bubble("me", q);
   $("chSugg").textContent = "";
+  if(!sampleFn){ bubble("ai","I can only reply when this page is opened inside Claude. Your message is saved here, so open the published link in Claude and send it again.", true); return; }
+  busy = true; $("chSend").disabled = true; $("chStop").hidden = false;
   const ai = el("div","bub ai"); const dots = el("span","dots"); dots.append(el("i"),el("i"),el("i")); ai.append(dots); chMsgs.append(ai); chMsgs.scrollTop = chMsgs.scrollHeight;
   chatCtl = new AbortController();
   const hist = turns.slice(-12); while(hist.length && hist[0].role !== "user") hist.shift();
@@ -2068,7 +2125,6 @@ async function ask(){
     ai.textContent = res.text + (res.truncated ? "\n\n(The answer was cut short. Ask me to continue.)" : "");
     turns.push({role:"assistant", content:res.text}); store.set("lumin.chat" + NS, turns.slice(-30));
   } catch(e){
-    turns.pop();
     const map = {not_granted:"Chat needs your permission to use Claude. Reload and allow it when asked.", sampling_disabled:"Claude is not available for this account.", rate_limited:"Too many questions, or your usage limit was reached. Please wait a bit and try again.", session_expired:"Please sign in to Claude again and retry."};
     if(e && e.code === "cancelled"){ ai.textContent = (e.text || "") + (e.text ? "\n\n(Stopped)" : "Stopped."); }
     else { ai.textContent = (e && e.text ? e.text + "\n\n" : "") + (map[e && e.code] || "Something went wrong. Please try again."); ai.classList.add("err"); }
